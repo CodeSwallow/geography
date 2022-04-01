@@ -1,14 +1,12 @@
-from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from .views import *
 
-app_name = 'countries'
+router = DefaultRouter()
+router.register(r'countries', CountryViewSet, basename='countries')
+
 urlpatterns = [
-    # path('', main, name='index'),
-    # path('<int:pk>', main, name='index'),
-    path('countries', CountryList.as_view()),
-    path('countries/<int:pk>', CountryDetail.as_view()),
+    path('', include(router.urls))
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
