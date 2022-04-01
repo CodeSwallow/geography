@@ -9,7 +9,7 @@ from .models import Country, City, Continent
 # Create your tests here.
 
 
-class CountryModelTest(APITestCase):
+class CountryViewSetTest(APITestCase):
 
     @classmethod
     def setUpTestData(cls):
