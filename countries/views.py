@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import generics
+from rest_framework import viewsets
 
 from .models import Country
 from .serializers import CountrySerializer
@@ -13,11 +14,13 @@ def main(request):
     return render(request, 'countries/index.html', {"country_list": countries})
 
 
-class CountryList(generics.ListAPIView):
+class CountryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
+    def get_queryset(self):
+        name = self.request.query_params.get('name')
+        if name is not None:
+            self.queryset = self.queryset.filter(name__contains=name)
+        return self.queryset
 
-class CountryDetail(generics.RetrieveAPIView):
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializer
