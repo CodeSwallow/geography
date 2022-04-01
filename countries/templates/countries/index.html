@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geography</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'countries/styles.css' %}">
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="header">
+        <h1>Code<span class="light-blue">Swallow</span></h1>
+    </div>
+    <div class="sidebar">
+        {% if country_list %}
+    <ul>
+        {% for country in country_list %}
+            <li><a href="{% url 'countries:index' country.id %}">{{ country.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    </div>
+    <div class="body">
+        <p>loremadfj;asdjf;sadjf;dklsjf;dlskjf;lksdfj;ldksjf</p>
+    </div>
+    <div class="footer">
+        <p>loremadfj;asdjf;sadjf;dklsjf;dlskjf;lksdfj;ldksjf</p>
+    </div>
+</div>
+
+</body>
+</html>
