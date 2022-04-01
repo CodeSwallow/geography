@@ -5,9 +5,10 @@ from .views import *
 
 app_name = 'countries'
 urlpatterns = [
-    path('', main, name='index'),
-    path('<int:pk>', main, name='index'),
+    # path('', main, name='index'),
+    # path('<int:pk>', main, name='index'),
     path('countries', CountryList.as_view()),
+    path('countries/<int:pk>', CountryDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

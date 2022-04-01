@@ -16,3 +16,8 @@ def main(request):
 class CountryList(generics.ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+
+
+class CountryDetail(generics.RetrieveAPIView):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
