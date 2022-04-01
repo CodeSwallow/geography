@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+}
+
+.header {
+    grid-column: 1 / 6;
+    background-color: #061e38;
+}
+
+h1 {
+    color: white;
+    padding: 10px;
+}
+
+.light-blue {
+    color: #75b7ff;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: white;
+}
+
+.body {
+    grid-column: 2 / 6;
+    background-color: blue;
+}
+
+.footer {
+    grid-column: 1 / 6;
+    background-color: red;
+}

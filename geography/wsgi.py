@@ -1,5 +1,5 @@
 """
-WSGI config for geography project.
+WSGI config for countries project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

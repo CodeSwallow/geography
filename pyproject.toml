@@ -7,9 +7,10 @@ authors = ["Isai Ramirez <isai.ramirez.stamaria15@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = "^4.0.3"
-psycopg2 = "^2.9.3"
 coverage = "^6.3.2"
 django-environ = "^0.8.1"
+djangorestframework = "^3.13.1"
+psycopg2 = "^2.9.3"
 
 [tool.poetry.dev-dependencies]
 

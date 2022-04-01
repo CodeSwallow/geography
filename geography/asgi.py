@@ -1,5 +1,5 @@
 """
-ASGI config for geography project.
+ASGI config for countries project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
