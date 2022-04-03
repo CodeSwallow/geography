@@ -59,6 +59,16 @@ class GeographyViewSetsTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 4)
 
+    def test_can_retrieve_countries_with_query_string(self):
+        """
+        Ensure we can retrieve a list of all countries that match query string.
+        """
+        url = reverse('countries-list')+"?name=China"
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]['population'], 1439323776)
+
     def test_country_has_one_capital(self):
         """
         Ensure country with one capital displays attribute correctly.
@@ -120,6 +130,16 @@ class GeographyViewSetsTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 6)
 
+    def test_can_retrieve_cities_with_query_string(self):
+        """
+        Ensure we can retrieve a list of all cities that match query string.
+        """
+        url = reverse('cities-list')+"?name=Washington"
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]['country'], 'United States of America')
+
     def test_country_of_capital_city(self):
         """
         Ensure we can view the country of the capital city
@@ -156,6 +176,16 @@ class GeographyViewSetsTest(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 4)
+
+    def test_can_retrieve_continents_with_query_string(self):
+        """
+        Ensure we can retrieve a list of all continents that match query string.
+        """
+        url = reverse('continents-list')+"?name=A"
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 3)
+        self.assertEqual(response.data[0]['name'], 'North America')
 
     def test_continent_country_count(self):
         """
