@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Country
+from .models import Country, Continent, City
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -11,4 +11,12 @@ class CountrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Country
+        fields = "__all__"
+
+
+class ContinentSerializer(serializers.ModelSerializer):
+    countries = serializers.StringRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = Continent
         fields = "__all__"
