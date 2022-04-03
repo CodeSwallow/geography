@@ -6,6 +6,7 @@ from .views import *
 router = DefaultRouter()
 router.register(r'countries', CountryViewSet, basename='countries')
 router.register(r'continents', ContinentViewSet, basename='continents')
+router.register(r'cities', CityViewSet, basename='cities')
 
 urlpatterns = [
     path('', include(router.urls))

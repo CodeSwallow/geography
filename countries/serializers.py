@@ -20,3 +20,11 @@ class ContinentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Continent
         fields = "__all__"
+
+
+class CitySerializer(serializers.ModelSerializer):
+    country = serializers.StringRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = City
+        fields = "__all__"

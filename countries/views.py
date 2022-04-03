@@ -1,17 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import generics
 from rest_framework import viewsets
 
-from .models import Country, Continent
-from .serializers import CountrySerializer, ContinentSerializer
+from .models import Country, Continent, City
+from .serializers import CountrySerializer, ContinentSerializer, CitySerializer
 
 # Create your views here.
-
-
-def main(request):
-    countries = Country.objects.all()
-    return render(request, 'countries/index.html', {"country_list": countries})
 
 
 class CountryViewSet(viewsets.ReadOnlyModelViewSet):
@@ -35,4 +27,14 @@ class ContinentViewSet(viewsets.ReadOnlyModelViewSet):
             self.queryset = self.queryset.filter(name__contains=name)
         return self.queryset
 
+
+class CityViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+    def get_queryset(self):
+        name = self.request.query_params.get('name')
+        if name is not None:
+            self.queryset = self.queryset.filter(name__contains=name)
+        return self.queryset
 
