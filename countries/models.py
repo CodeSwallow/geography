@@ -26,6 +26,10 @@ class Continent(models.Model):
     land_area = models.PositiveIntegerField(null=True)
     countries = models.ManyToManyField(Country, through='TransContinental')
 
+    @property
+    def country_count(self):
+        return len(self.countries.all())
+
     def __str__(self):
         return self.name
 

@@ -16,6 +16,7 @@ class CountrySerializer(serializers.ModelSerializer):
 
 class ContinentSerializer(serializers.ModelSerializer):
     countries = serializers.StringRelatedField(many=True, read_only=True)
+    country_count = serializers.ReadOnlyField()
 
     class Meta:
         model = Continent
@@ -23,7 +24,7 @@ class ContinentSerializer(serializers.ModelSerializer):
 
 
 class CitySerializer(serializers.ModelSerializer):
-    country = serializers.StringRelatedField(many=True, read_only=True)
+    country = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = City
